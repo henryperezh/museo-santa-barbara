@@ -41,24 +41,24 @@ body{font-family:"Open Sans",sans-serif;background:var(--fondo);color:var(--oscu
 .progreso-barra{height:4px;background:rgba(0,0,0,0.15);}
 .progreso-fill{height:100%;background:linear-gradient(90deg,var(--dorado),var(--verde));transition:width 0.4s ease;}
 
-.estacion-wrap{flex:1;overflow-y:auto;padding-bottom:90px;display:flex;flex-direction:column;}
-.estacion-imagen{width:100%;height:280px;background:linear-gradient(135deg,var(--morado),#5a2d91);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.estacion-wrap{flex:1;overflow-y:auto;padding-bottom:80px;display:flex;flex-direction:column;min-height:0;}
+.estacion-imagen{width:100%;height:260px;background:linear-gradient(135deg,var(--morado),#5a2d91);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .estacion-imagen img{width:100%;height:100%;object-fit:contain;background:#000;}
 .img-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.3);}
 .img-placeholder span{font-size:2.5rem;}
 .img-placeholder p{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;}
 .badge-num{position:absolute;top:12px;left:12px;background:var(--dorado);color:var(--blanco);font-family:"Montserrat",sans-serif;font-weight:700;font-size:0.7rem;padding:4px 10px;border-radius:2px;letter-spacing:1px;}
 .franja-img{height:5px;background:linear-gradient(90deg,var(--dorado) 33%,var(--verde) 33%,var(--verde) 66%,var(--morado) 66%);}
-.estacion-cuerpo{padding:24px 20px;display:flex;flex-direction:column;}
-.instruccion-nav{background:rgba(107,191,46,0.1);border-left:3px solid var(--verde);padding:10px 14px;border-radius:0 3px 3px 0;font-size:0.95rem;color:#2d6600;font-weight:600;margin-bottom:16px;}
-.estacion-nombre{font-family:"Montserrat",sans-serif;font-size:1.7rem;font-weight:900;color:var(--oscuro);text-transform:uppercase;line-height:1.2;margin-bottom:6px;}
-.sala-tag{font-size:0.82rem;color:var(--dorado);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;}
-.estacion-desc{font-size:1.05rem;line-height:1.8;color:var(--gris);margin-bottom:18px;flex:1;}
-.btn-audio{display:flex;align-items:center;gap:10px;background:var(--morado);border:none;color:var(--blanco);padding:16px 18px;border-radius:3px;font-size:1rem;font-weight:600;cursor:pointer;width:100%;}
+.estacion-cuerpo{padding:28px 22px;display:flex;flex-direction:column;flex:1;min-height:calc(100vh - 340px);}
+.instruccion-nav{background:rgba(107,191,46,0.1);border-left:4px solid var(--verde);padding:14px 16px;border-radius:0 3px 3px 0;font-size:clamp(1rem,3vw,1.1rem);color:#2d6600;font-weight:600;margin-bottom:20px;}
+.estacion-nombre{font-family:"Montserrat",sans-serif;font-size:clamp(1.6rem,5vw,2rem);font-weight:900;color:var(--oscuro);text-transform:uppercase;line-height:1.2;margin-bottom:10px;}
+.sala-tag{font-size:0.9rem;color:var(--dorado);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
+.estacion-desc{font-size:clamp(1.1rem,3.5vw,1.3rem);line-height:1.9;color:var(--gris);margin-bottom:24px;flex:1;}
+.btn-audio{display:flex;align-items:center;justify-content:center;gap:12px;background:var(--morado);border:none;color:var(--blanco);padding:20px 18px;border-radius:3px;font-size:1.1rem;font-weight:700;cursor:pointer;width:100%;margin-top:auto;}
 .btn-audio:active{background:#7a40a8;}
 
-.nav-inferior{position:fixed;bottom:0;left:0;right:0;background:var(--blanco);border-top:3px solid var(--verde);padding:10px 14px;display:flex;gap:10px;z-index:10;}
-.btn-nav{flex:1;padding:16px;border:none;border-radius:3px;font-family:"Montserrat",sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;letter-spacing:1px;text-transform:uppercase;}
+.nav-inferior{position:fixed;bottom:0;left:0;right:0;background:var(--blanco);border-top:3px solid var(--verde);padding:12px 14px;display:flex;gap:10px;z-index:10;}
+.btn-nav{flex:1;padding:18px;border:none;border-radius:3px;font-family:"Montserrat",sans-serif;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:1px;text-transform:uppercase;}
 .btn-anterior{background:transparent;border:2px solid #ddd;color:var(--gris);}
 .btn-siguiente{background:var(--dorado);color:var(--blanco);flex:2;}
 .btn-siguiente:active,.btn-anterior:active{opacity:0.8;}
