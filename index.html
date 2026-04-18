@@ -54,7 +54,7 @@ body{font-family:"Open Sans",sans-serif;background:var(--fondo);color:var(--oscu
 .estacion-nombre{font-family:"Montserrat",sans-serif;font-size:clamp(1.6rem,5vw,2rem);font-weight:900;color:var(--oscuro);text-transform:uppercase;line-height:1.2;margin-bottom:10px;}
 .sala-tag{font-size:0.9rem;color:var(--dorado);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
 .estacion-desc{font-size:clamp(1.1rem,3.5vw,1.3rem);line-height:1.9;color:var(--gris);margin-bottom:24px;flex:1;}
-.btn-audio{display:flex;align-items:center;justify-content:center;gap:12px;background:var(--morado);border:none;color:var(--blanco);padding:20px 18px;border-radius:3px;font-size:1.1rem;font-weight:700;cursor:pointer;width:100%;margin-top:auto;}
+.btn-audio{display:flex;align-items:center;justify-content:center;gap:12px;background:var(--morado);border:none;color:var(--blanco);padding:18px 18px;border-radius:3px;font-size:1.1rem;font-weight:700;cursor:pointer;width:100%;margin-bottom:20px;}
 .btn-audio:active{background:#7a40a8;}
 
 .nav-inferior{position:fixed;bottom:0;left:0;right:0;background:var(--blanco);border-top:3px solid var(--verde);padding:12px 14px;display:flex;gap:10px;z-index:10;}
@@ -259,8 +259,8 @@ function renderEstacion() {
       '<div class="instruccion-nav">' + e.instruccion + '</div>',
       '<h2 class="estacion-nombre">' + e.nombre + '</h2>',
       '<p class="sala-tag">&#9670; ' + e.sala + '</p>',
-      '<p class="estacion-desc">' + e.descripcion + '</p>',
       '<button class="btn-audio" onclick="reproducirAudio(' + paso + ')">&#128266; Escuchar descripcion</button>',
+      '<p class="estacion-desc">' + e.descripcion + '</p>',
     '</div>'
   ].join("");
 
