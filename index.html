@@ -11,7 +11,8 @@
   --blanco:#FFF; --oscuro:#1a1a1a; --gris:#555; --fondo:#f9f9f9;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:"Open Sans",sans-serif;background:var(--fondo);color:var(--oscuro);min-height:100vh;overflow-x:hidden;}
+body{font-family:"Open Sans",sans-serif;background:var(--fondo);color:var(--oscuro);min-height:100vh;overflow-x:hidden;padding-top:32px;}
+.aviso-global{position:fixed;top:0;left:0;right:0;z-index:9999;background:#e53935;color:#fff;text-align:center;font-family:"Montserrat",sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:7px 12px;}
 .pantalla{display:none;min-height:100vh;flex-direction:column;}
 .pantalla.activa{display:flex;}
 
@@ -105,6 +106,8 @@ body{font-family:"Open Sans",sans-serif;background:var(--fondo);color:var(--oscu
 </style>
 </head>
 <body>
+
+<div class="aviso-global">⚠️ ATENCIÓN: TEXTOS DE PRUEBA</div>
 
 <section class="pantalla activa" id="bienvenida">
   <div class="bienvenida-contenido">
@@ -201,24 +204,14 @@ body{font-family:"Open Sans",sans-serif;background:var(--fondo);color:var(--oscu
 var FOTOS = ["https://s1.wklcdn.com/image_85/2568951/259289312/151840147.700x525.jpg", "https://s2.wklcdn.com/image_85/2568951/259289313/151840148.700x525.jpg", "https://s1.wklcdn.com/image_85/2568951/259289314/151840150.700x525.jpg", "https://s1.wklcdn.com/image_85/2568951/259289315/151840156.700x525.jpg", "https://s1.wklcdn.com/image_85/2568951/259289316/151840159.700x525.jpg", "https://s1.wklcdn.com/image_85/2568951/259289317/151840165.700x525.jpg", "https://s2.wklcdn.com/image_85/2568951/259289318/151840181.700x525.jpg", "https://s1.wklcdn.com/image_85/2568951/259289319/151840192.700x525.jpg", "https://s0.wklcdn.com/image_85/2568951/259289320/151840371.700x525.jpg", "https://s0.wklcdn.com/image_85/2568951/259289321/151840689.700x525.jpg"];
 var estaciones = [{"sala": "Entrada", "nombre": "Mapa de Colombia", "instruccion": "🗺️ Al entrar, mira la pared del frente", "descripcion": "Al entrar, observa este mapa en relieve que muestra la geografía de Colombia. Busca el Valle del Cauca, donde se encuentra Vijes, entre las cordilleras Central y Occidental."}, {"sala": "Sala Calima", "nombre": "Vitrina Principal Calima", "instruccion": "🚪 Cruza la puerta y voltea a tu izquierda", "descripcion": "Esta vitrina muestra figuras y vasijas de la cultura Calima, elaboradas en cerámica hace más de mil años. Cada pieza fue modelada a mano y representa seres humanos, animales y deidades de su cosmovisión."}, {"sala": "Sala Calima", "nombre": "Vitrina de Cuencos", "instruccion": "➡️ Avanza hacia la siguiente vitrina", "descripcion": "Los cuencos que ves aquí fueron usados en ceremonias y en la vida cotidiana. Su forma y decoración varía según su función: los más elaborados eran de uso ritual."}, {"sala": "Sala Calima", "nombre": "Acceso entre Salas", "instruccion": "🚪 Observa esta puerta antes de continuar", "descripcion": "Al cruzar esta puerta entras a la siguiente sección del museo. Nota la arquitectura de la casa, que hace parte del patrimonio histórico de Vijes."}, {"sala": "Sala Calima", "nombre": "Vitrina de Orfebrería", "instruccion": "👀 Mira la vitrina a tu derecha", "descripcion": "Esta vitrina exhibe réplicas de piezas de orfebrería Calima. Los collares y pectorales eran símbolos de estatus y poder espiritual, usados por líderes y chamanes."}, {"sala": "Sala Calima", "nombre": "Figuras Antropomorfas", "instruccion": "➡️ Continúa hacia la siguiente vitrina", "descripcion": "Estas figuras representan seres humanos en distintas posturas. Los arqueólogos creen que algunas eran ofrendas funerarias, colocadas junto a los muertos para acompañarlos en el más allá."}, {"sala": "Sala Calima", "nombre": "Figuras Ceremoniales", "instruccion": "👈 Voltea y observa el grupo de figuras", "descripcion": "Este conjunto de figuras de cerámica oscura posiblemente fue usado en rituales de fertilidad o de conexión con los ancestros. Su color oscuro puede indicar técnicas de cocción especiales."}, {"sala": "Sala de Colecciones", "nombre": "Sala de Colecciones", "instruccion": "➡️ Avanza hacia la sala siguiente", "descripcion": "Esta sala reúne objetos de distintas épocas y culturas. Los muebles de madera forman parte del mobiliario original de la casa y dan contexto al patrimonio histórico del municipio."}, {"sala": "Sala de Colecciones", "nombre": "Canastos y Tejidos", "instruccion": "👆 Mira la pared frente a ti", "descripcion": "Los canastos tejidos en esta pared son ejemplos de artesanía tradicional de la región. Esta técnica ha sido transmitida de generación en generación en las comunidades del Valle del Cauca."}, {"sala": "Sala Histórica", "nombre": "Paneles Históricos", "instruccion": "🔍 Lee los paneles redondos en la pared", "descripcion": "Estos paneles narran la historia de la conquista y colonización del territorio. Léelos con calma, conectan la historia de Vijes con los grandes eventos que marcaron a Colombia."}];
 var paso = 0, calificacion = 0;
-var DURACION_HORAS = 3, KEY = "msb_inicio";
-
-function verificarTiempo() {
-  var t = localStorage.getItem(KEY);
-  if (!t) return true;
-  return (Date.now() - parseInt(t)) / 3600000 < DURACION_HORAS;
-}
 
 function iniciarRecorrido() {
-  if (!localStorage.getItem(KEY)) localStorage.setItem(KEY, Date.now().toString());
-  if (!verificarTiempo()) { mostrar("bloqueado"); return; }
   paso = 0;
   mostrar("recorrido");
   renderEstacion();
 }
 
 function siguiente() {
-  if (!verificarTiempo()) { mostrar("bloqueado"); return; }
   if (paso < estaciones.length - 1) {
     paso++;
     renderEstacion();
@@ -286,7 +279,6 @@ function calificar(n) {
 }
 
 function enviarEncuesta() {
-  localStorage.removeItem(KEY);
   mostrar("gracias");
 }
 
@@ -297,10 +289,6 @@ function mostrar(id) {
   }
   document.getElementById(id).classList.add("activa");
 }
-
-window.addEventListener("load", function() {
-  if (localStorage.getItem(KEY) && !verificarTiempo()) mostrar("bloqueado");
-});
 </script>
 </body>
 </html>
